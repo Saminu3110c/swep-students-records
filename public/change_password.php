@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $update = "UPDATE admins SET password = '$hash' WHERE id = $admin_id";
         if (mysqli_query($conn, $update)) {
             $success = "Password changed successfully.";
+            header("Location: index.php");
         } else {
             $errors[] = "Error updating password: " . mysqli_error($conn);
         }

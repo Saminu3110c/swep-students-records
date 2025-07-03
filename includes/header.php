@@ -19,6 +19,9 @@
         <a href="register.php" class="btn btn-sm btn-secondary">
             <i class="bi bi-person-plus"></i> New User
         </a>
+        <a href="change_password.php" class="btn btn-sm btn-secondary">
+            <i class="bi bi-key"></i> Change Password
+        </a>
         <a href="logout.php" class="btn btn-sm btn-danger">
             <i class="bi bi-box-arrow-right"></i> Logout
         </a>
