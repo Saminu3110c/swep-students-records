@@ -9,6 +9,20 @@ include '../config/db.php';
 include '../includes/header.php';
 
 $search = $_GET['search'] ?? '';
+$per_page = 10; // records per page
+$page = $_GET['page'] ?? 1;
+$start = ($page - 1) * $per_page;
+
+$total_sql = "SELECT COUNT(*) FROM students WHERE 
+        matric_no LIKE '%$search%' OR 
+        name LIKE '%$search%' OR 
+        department LIKE '%$search%' OR 
+        level LIKE '%$search%' OR 
+        session LIKE '%$search%'";
+$total_result = mysqli_query($conn, $total_sql);
+$total_row = mysqli_fetch_row($total_result);
+$total_records = $total_row[0];
+$total_pages = ceil($total_records / $per_page);
 
 $sql = "SELECT * FROM students WHERE 
         matric_no LIKE '%$search%' OR 
@@ -16,7 +30,16 @@ $sql = "SELECT * FROM students WHERE
         department LIKE '%$search%' OR 
         level LIKE '%$search%' OR 
         session LIKE '%$search%' 
-        ORDER BY id DESC";
+        ORDER BY id DESC
+        LIMIT $start, $per_page";
+
+// $sql = "SELECT * FROM students WHERE 
+//         matric_no LIKE '%$search%' OR 
+//         name LIKE '%$search%' OR 
+//         department LIKE '%$search%' OR 
+//         level LIKE '%$search%' OR 
+//         session LIKE '%$search%' 
+//         ORDER BY id DESC";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -28,6 +51,8 @@ $result = mysqli_query($conn, $sql);
 
 <a href="add.php" class="btn btn-success mb-3">Add New Student</a>
 <a href="upload.php" class="btn btn-secondary mb-3">Upload CSV</a>
+<a href="export.php" class="btn btn-info mb-3">Export CSV</a>
+
 
 <table class="table table-bordered table-striped">
     <thead class="table-dark">
@@ -66,5 +91,15 @@ $result = mysqli_query($conn, $sql);
     <?php endif; ?>
     </tbody>
 </table>
+<nav>
+  <ul class="pagination justify-content-center">
+    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+      <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+        <a class="page-link" href="?page=<?= $i ?>&search=<?= urlencode($search) ?>"><?= $i ?></a>
+      </li>
+    <?php endfor; ?>
+  </ul>
+</nav>
+
 
 <?php include '../includes/footer.php'; ?>
