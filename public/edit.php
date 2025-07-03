@@ -1,5 +1,11 @@
 <?php
 include '../config/db.php';
+    session_start();
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location: login.php");
+        exit;
+    }
+
 include '../includes/header.php';
 
 $id = $_GET['id'] ?? null;

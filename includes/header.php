@@ -7,4 +7,10 @@
 </head>
 <body>
 <div class="container mt-4">
+    <?php if (isset($_SESSION['admin_username'])): ?>
+    <div class="mb-3">
+        Logged in as <strong><?= htmlspecialchars($_SESSION['admin_username']) ?></strong>
+        <a href="logout.php" class="btn btn-sm btn-outline-danger ms-3">Logout</a>
+    </div>
+    <?php endif; ?>
 <h2 class="text-center mb-4">SWEP Students Records Management</h2>
