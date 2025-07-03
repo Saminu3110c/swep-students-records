@@ -83,11 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a href="index.php" class="btn btn-secondary">Back</a>
 </form>
 
-<div class="mt-4">
+<!-- <div class="mt-4">
     <h6>Sample CSV Format:</h6>
     <pre>matric_no,name,department,level,session,CA,exam
 22SCI001,John Doe,Computer Science,300,2024/2025,15,70
 22SCI002,Jane Smith,Mathematics,200,2024/2025,18,65</pre>
-</div>
+</div> -->
 
 <?php include '../includes/footer.php'; ?>

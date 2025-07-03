@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO admins (username, password) VALUES ('$username', '$hash')";
         if (mysqli_query($conn, $sql)) {
-            header("Location: login.php");
+            header("Location: index.php");
             exit;
         } else {
             $errors[] = "Error: " . mysqli_error($conn);

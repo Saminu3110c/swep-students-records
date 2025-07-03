@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="number" name="exam" class="form-control" value="0">
     </div>
     <button class="btn btn-primary" type="submit">Add Student</button>
+    <a href="index.php" class="btn btn-secondary">Cancel</a>
 </form>
 
 <?php include '../includes/footer.php'; ?>

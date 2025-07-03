@@ -15,9 +15,14 @@
             <i class="bi bi-person-circle"></i>
             Logged in as <strong><?= htmlspecialchars($_SESSION['admin_username']) ?></strong>
         </div>
+        <div>
+        <a href="register.php" class="btn btn-sm btn-secondary">
+            <i class="bi bi-person-plus"></i> New User
+        </a>
         <a href="logout.php" class="btn btn-sm btn-danger">
             <i class="bi bi-box-arrow-right"></i> Logout
         </a>
+        </div>
     </div>
     <?php endif; ?>
 
